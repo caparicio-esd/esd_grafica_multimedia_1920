@@ -1,1 +1,4 @@
-# esd_grafica_multimedia_1920
+# Repositorio para Gráfica Multimedia.   
+### Producción y programación.
+
+Repositorio de ejemplos y ejercicios que hayamos ido viendo en clase.
