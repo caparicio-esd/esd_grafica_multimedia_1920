@@ -10,7 +10,7 @@ let suma__MAL = num01 + num02;
 let suma = Number(num01) + Number(num02);
 
 let message01 = `La suma de ${num01} y ${num02} es ${suma__MAL}, pero está mal porque sumo dos strings!`;
-let message01 = `La suma de ${num01} y ${num02} es ${suma}, pero está bien porque sumo dos números!`;
+let message02 = `La suma de ${num01} y ${num02} es ${suma}, pero está bien porque sumo dos números!`;
 
 console.log(message01);
-console.log(message01);
+console.log(message02);
