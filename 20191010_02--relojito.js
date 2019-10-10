@@ -1,3 +1,4 @@
+let now = new Date();
 
 window.setInterval(() => {
 
