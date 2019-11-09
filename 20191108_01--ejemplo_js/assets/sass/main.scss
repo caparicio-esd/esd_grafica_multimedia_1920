@@ -1,0 +1,226 @@
+@import 'lib/vars';
+@import 'lib/mixins';
+@import 'lib/reboot';
+@import 'lib/fontawesome/font-awesome';
+@import 'lib/fontface';
+@import 'lib/keyframes';
+
+
+$main_color: #00bcd4;
+
+* {
+    // border: 1px solid pink;
+}
+
+html,
+body {
+    font-size: $base * 2;
+    font-family: $font_family_base;
+    line-height: $base * 3;
+    color: $body_color;
+}
+
+.app {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto auto 1fr;
+}
+
+.header {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    padding: calc(#{$base} * 2 - 4px);
+    border: 2px solid $main_color;
+    color: lighten($body_color, 15);
+
+    .toggle {
+
+        &.active {
+            color: $main_color;
+        }
+
+        .fa {
+            margin-right: $base;
+        }
+
+        .label {}
+    }
+}
+
+.sidebar_blue {
+    grid-column-end: span 1;
+    width: 50px;
+    background-color: $main_color;
+    transform: translateX(0%);
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: ease-out;
+    transition-delay: 200ms;
+
+    &.hidden {
+        transform: translateX(-100%);
+        transition-property: transform;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in;
+        transition-delay: 0ms;
+    }
+}
+
+.messages_box {
+    grid-column-end: span 1;
+    max-width: 350px;
+    border-right: 2px solid lighten($body_color, 60);
+    transform: translateX(0%);
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: ease-out;
+    transition-delay: 0ms;
+
+    &.hidden {
+        transform: translateX(-120%);
+        transition-property: transform;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in;
+        transition-delay: 200ms;
+    }
+
+    .searchbox {
+        padding: calc(#{$base} * 2 - 2px) $base * 2;
+        border-bottom: 2px solid lighten($body_color, 60);
+
+        form {
+            .fa {
+                color: $main_color;
+                margin: 0 $base * 2 0 0;
+            }
+
+            input {
+                border: 0;
+                font-size: inherit;
+                background: transparent;
+                outline: 0;
+            }
+        }
+    }
+
+    .messages {}
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-right: 10px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    padding: $base * 2;
+
+    .message_pic {
+        flex: 0 0 $base * 8;
+        height: $base * 8;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid white;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .message_text {
+        flex: 1 1 100%;
+        margin: 0 $base * 2;
+        overflow: hidden;
+
+        .message_text_title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: $base * 2.2;
+            font-weight: bold;
+            color: darken($main_color, 20);
+        }
+
+        .message_text_content {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .message_text_time {
+            font-size: $base * 1.9;
+            color: lighten($body_color, 30);
+
+            span {}
+        }
+    }
+
+    .message_amount {
+        flex: 0 0 auto;
+        align-self: flex-start;
+        margin: 0 $base * 4 0 $base;
+        background-color: $main_color;
+        line-height: $base * 2;
+        padding: $base;
+        color: white;
+        font-weight: bold;
+        border-radius: 3px;
+        visibility: hidden;
+        opacity: 0;
+        transition-property: visibility, opacity;
+        transition-duration: 150ms;
+        transition-timing-function: ease;
+
+        span {}
+    }
+
+    .message_arrow {
+        position: absolute;
+        top: 50%;
+        right: 0%;
+        transform: translate(100%, -50%);
+        transition-property: transform;
+        transition-duration: 150ms;
+        transition-timing-function: ease;
+
+        svg {
+            rect {
+                fill: white;
+                transform-origin: center;
+                transform: translate(76%, 0) rotate(45deg) scale(.9);
+            }
+        }
+    }
+
+    &.await {
+        background-color: desaturate(lighten($main_color, 50), 50);
+        border-color: lighten($body_color, 60);
+
+        .message_amount {
+            visibility: visible;
+            opacity: 1;
+            transition-property: visibility, opacity;
+            transition-duration: 150ms;
+            transition-timing-function: ease;
+        }
+
+        .message_arrow {
+            transform: translate(41%, -50%);
+            transition-property: transform;
+            transition-duration: 150ms;
+            transition-timing-function: ease;
+        }
+    }
+
+    &.active {
+        background-color: desaturate(lighten($main_color, 50), 50);
+        border-color: lighten($body_color, 60);
+    }
+}
+
+.message_box {
+    grid-column-end: span 1;
+}
