@@ -23,6 +23,15 @@ console.log(`
  * Que el user_name no tenga ninguno de los siguientes símbolos: & ! $
  */
 
+if (
+    user.includes("&") ||
+    user.includes("%") ||
+    user.includes("$")
+) {
+
+}
+
+
 /**
  * Que el user_name no tenga ninguno de estos símbolos á é í ó ú ñ
  */
