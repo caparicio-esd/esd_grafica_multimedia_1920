@@ -1,0 +1,358 @@
+@import 'lib/vars';
+@import 'lib/mixins';
+@import 'lib/reboot';
+@import 'lib/fontawesome/font-awesome';
+@import 'lib/fontface';
+@import 'lib/keyframes';
+
+
+$corporateColor: tomato;
+
+* {
+    // border: 1px solid $corporateColor;
+}
+
+html,
+body {
+    font-size: $base * 2;
+    font-family: $font_family_base;
+    line-height: $base * 3;
+    color: $body_color;
+}
+
+$w: 1180px;
+
+
+.header {
+    display: flex;
+    justify-content: center;
+    font-size: .9rem;
+    box-shadow: 0 0.3px 0 black;
+
+    .header_holder {
+        max-width: $w;
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            flex: 0 0 100%;
+            text-align: center;
+            padding: 1rem;
+            margin: 2rem 0;
+
+            img {}
+        }
+
+        nav {
+            margin: 0 auto;
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            >ul {
+                display: flex;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+
+                >li {
+                    position: relative;
+                    padding: .5rem;
+                    margin: 0 .25rem;
+                    text-transform: uppercase;
+                    font-weight: bold;
+
+                    .fa {
+                        font-size: .8rem;
+                        transform: translate(0, -2px);
+                    }
+
+                    >ul {
+                        position: absolute;
+                        top: calc(100% + 1px);
+                        left: 0;
+                        z-index: 2;
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
+                        width: 200%;
+                        background-color: #fff;
+                        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.144);
+                        display: none;
+
+
+                        >li {
+                            text-transform: initial;
+                            font-weight: initial;
+                            padding: .5rem;
+                            box-shadow: 0 0.3px 0 black;
+
+
+                            &:last-child {
+                                box-shadow: 0 0 0 transparent;
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .searchbox {
+            padding: .5rem;
+
+            .fa {}
+        }
+
+        .modal_searchbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 4;
+            background-color: rgba(255, 255, 255, 0.897);
+
+            &.closed {
+                visibility: hidden;
+                opacity: 0;
+            }
+
+            .close_button {
+                position: absolute;
+                top: 2rem;
+                right: 2rem;
+            }
+        }
+
+        form {
+            input {}
+
+            button {}
+        }
+    }
+}
+
+.post_roll {
+    max-width: $w;
+    width: 90%;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(240px, 340px);
+    grid-gap: 2rem;
+
+    .post {
+        .post_picture {
+            height: calc(100% - 100px);
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        .post_text {
+            padding: 1rem;
+            width: 90%;
+            margin: -4rem auto 0;
+            background: #fff;
+            position: relative;
+            z-index: 2;
+
+            .post_category {
+                font-size: .8rem;
+                text-transform: uppercase;
+                color: #666;
+            }
+
+            .post_title {
+                font-size: 1.1rem;
+                margin-bottom: .5rem;
+            }
+
+            .post_author {
+                font-size: .8rem;
+                text-transform: uppercase;
+                color: #666;
+            }
+        }
+
+        &:first-child {
+            grid-column-end: span 3;
+            grid-row-end: span 2;
+            position: relative;
+
+            .post_picture {
+                height: calc(100% - 0px);
+            }
+
+            .post_text {
+                position: absolute;
+                bottom: 1rem;
+                left: 1rem;
+            }
+
+        }
+    }
+}
+
+.featured {
+    max-width: $w;
+    width: 90%;
+    margin: 2rem auto;
+    height: 500px;
+
+    .post {
+        height: 100%;
+        width: 80%;
+    }
+
+    .post_picture {
+        height: calc(100% - 100px);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .post_text {
+        padding: 1rem;
+        width: 90%;
+        margin: -4rem auto 0;
+        background: #fff;
+        position: relative;
+        z-index: 2;
+
+        .post_category {
+            font-size: .8rem;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .post_title {
+            font-size: 1.1rem;
+            margin-bottom: .5rem;
+        }
+
+        .post_author {
+            font-size: .8rem;
+            text-transform: uppercase;
+            color: #666;
+        }
+    }
+}
+
+.articles {
+    max-width: $w;
+    width: 90%;
+    margin: 2rem auto;
+
+    .articles_holder {
+        max-width: $w;
+        width: 60%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+        grid-gap: 2rem;
+
+        .post {
+            grid-row-end: span 3;
+
+            .post_picture {
+                max-height: 300px;
+                width: 100%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+
+            .post_text {
+                width: 90%;
+                margin-top: 1rem;
+
+                .post_category {
+                    font-size: .8rem;
+                    text-transform: uppercase;
+                    color: #666;
+                }
+
+                .post_title {
+                    font-size: 1.1rem;
+                    margin-bottom: .5rem;
+                }
+
+                .post_author {
+                    font-size: .8rem;
+                    text-transform: uppercase;
+                    color: #666;
+                }
+            }
+
+            &:not(:first-child) {
+                grid-row-end: span 1;
+                display: flex;
+                align-items: stretch;
+
+                .post_text {
+                    margin: 0 0 0 1rem;
+
+                    .post_category,
+                    .post_author {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.post {
+
+    &.video {
+        .post_picture {
+            position: relative;
+
+            &::before {
+                content: '\f04b';
+                font-family: 'FontAwesome';
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-size: 2rem;
+                text-shadow: 0 2px 3px #00000061;
+            }
+
+            &::after {
+                content: '';
+                width: 80px;
+                height: 80px;
+                border: 3px solid white;
+                border-radius: 50%;
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
